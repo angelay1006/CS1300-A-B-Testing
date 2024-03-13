@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS1300 A/B Testing Submission</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+
+
+<body>
+
+    <div class="container my-5">
+        <!-- Your content here -->
+        <h1 class="mb-4">CS1300 A/B Testing Submission Writeup </h1>
+
+        <h2 class="mb-3">Overview</h2>
+            <p>
+                Welcome to my A/B Testing assignment submission! From this assignment, I've taken away some practical skills 
+                in the statistical methods frequently employed in design. The objective was to design how design choices are 
+                substantiated and optimized while improving my engagement with user research tasks. Through this, I've become 
+                more familiar with choosing the right statistical tests for different scenarios and interpreting outcomes to 
+                draw more informed conclusions on the impact of distinct designs on user engagement. This experience has 
+                equipped me with the confidence to conduct statistical analyses in future projects.
+            </p>
+        <hr>
+
+        <h2 class="mb-3">Part 1. Data Collection</h2>
+            <p>
+                In this studio session, we participated in a comparative study of two versions of the product, known as A/B 
+                testing, where "A" serves as the control and "B" as the variant. The objective was not to emulate a standard 
+                A/B test precisely. Instead, the exercise was designed to gather data from our classmates to practice 
+                statistical analysis techniques applicable in authentic A/B testing scenarios. Unlike our classroom setting, 
+                conventional A/B tests are usually not performed in labs. They involve real users of the website, who are randomly 
+                assigned to experience either the "A" or "B" version, rather than arbitrary participants. The test was run on two 
+                different UI designs on a medical booking website. 
+            </p>
+            
+            <div class="p-3 mb-3 border rounded" style="background-color: #f8f9fa;">
+                Users were assigned a single task: "Schedule an appointment with Adam Ng, MD at Morristown Medical Center on April 23, 2024."
+            </div>
+
+            <p>
+                Each person in the class tested out Version A one by one, then we were instructed to modify Version B of the 
+                website in a way that we believed would impact the user's flow in completing the task. Rather than overhauling 
+                the entire site, we were expected to make some small changes to streamline the user's process. The below shows 
+                both versions of the website. As can be seen on Version A, the dates are not organized chronologically, which 
+                caused some confusion when I was completing the task. Therefore, the changes I made to Version B include 
+                reorganizing the dates chronologically and changing the buttons of the colors to increase contrast of the text 
+                for better readability. 
+            </p>
+
+            <div class="row mb-5"> <!-- row added to wrap columns -->
+                <!-- Column 1 -->
+                <div class="col">
+                    <h6> Version A </h6>
+                    <img src="assets/version_a.png" class="img-fluid" alt="website of version A">
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col">
+                    <h6> Version B </h6>
+                    <img src="assets/version_b.png" class="img-fluid" alt="website of version B">
+                </div>
+            </div> <!-- Closing row div -->
+
+            <p>
+                In the final phase of the data collection process, each person in the class tested out Version B. The JavaScript 
+                files in the repository allowed for tracking of various metrics in a CSV file, which will be described below. 
+            </p>
+
+        <hr>
+
+        <h2 class="mb-3">Part 2. Analysis</h2>
+            <h3 class="mb-3"> About the Data </h3>
+            <div class="row mb-5"> <!-- row added to wrap columns -->
+                <!-- Column 1 -->
+                <div class="col">
+                    <p> The CSV data files from the studio session contain metrics for each user, which will be relevant in the assignment. 
+                        The bolded metrics are the ones that we were required to analyze, while we were free to choose one metric of our own. 
+                        In my case, I decided to analyze the total number of clicks performed on the screen for each user (<code>num_clicks</code>). 
+                        This makes sense as this metric relates to the efficiency of the website — the fewer number of clicks, the better. 
+                    </p>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col">
+                    <img src="assets/metric_info.png" class="img-fluid" alt="website of version B">
+                </div>
+            </div> <!-- Closing row div -->
+
+
+            <h3 class="mb-3"> Creating Hypotheses </h3>
+                <p>
+                    Here, I created a null and alternative hypothesis for each of the following metrics. There is the misclick rate, 
+                    the time on page, and number of clicks. Then, I noted the null and alternative hypotheses for each metric, which 
+                    predict that one version will perform better than the other. 
+                </p>
+
+                <h4 class="mb-3"> Metric 1. Misclick Rate </h4>
+                    <ul>
+                        <li><b>Null Hypothesis (H0)</b>: There is no difference in the misclick rate between users of Version A and users of Version B of the website.</li>
+                        <li><b>Alternative Hypothesis (H0)</b>: The misclick rate is lower for users of Version B than for users of Version A of the website.</li>
+                        <li><b> Predication & Justification</b>: 
+                            I predict we will reject the null hypothesis in favor of the alternative hypothesis. The modifications made in Version B were specifically aimed at improving website efficiency, especially using clearer navigation and button placement, which reduced the likelihood of misclicks compared to Version A.
+                        </li>
+                    </ul>
+                <h4 class="mb-3"> Metric 2. Time on Page</h4>
+                    <ul>
+                        <li><b> Null Hypothesis (H0)</b>: There is no difference in the time spent on the webpage between users of Version A and users of Version B.</li>
+                        <li><b> Alternative Hypothesis (H1)</b>: Users of Version B spend less time on the webpage than users of Version A.</li>
+                        <li><b> Predication & Justification</b>: 
+                            I predict we will reject the null hypothesis in favor of the alternative hypothesis. The efficiency improvements in Version B, such as streamlined content and optimized page layouts, should enable users to complete their tasks more quickly, reducing their overall time on the page.
+                        </li>
+
+                    </ul>
+                <h4 class="mb-3"> Metric 3. Total Number of Clicks </h4>
+                    <ul>
+                        <li><b> Null Hypothesis (H0)</b>: There is no difference in the total number of clicks performed on the website between users of Version A and users of Version B.                        </li>
+                        <li><b> Alternative Hypothesis (H1)</b>: Users of Version B perform fewer total clicks on the website than users of Version A. </li>
+                        <li><b> Predication & Justification</b>:  
+                            I predict we will reject the null hypothesis in favor of the alternative hypothesis. This is based on the assumption that Version B of the website was redesigned with a focus on improving efficiency. This included a more intuitive layout with organized dates in order, which leads to a more direct pathway to complete the task. This would significantly reduce the number of clicks required to navigate through the website and complete desired actions. If the redesign effectively addresses common user pain points and streamlines the task completion process, it would result in a noticeable decrease in the total number of clicks.
+                        </li>
+                    </ul>
+
+            <h3 class="mb-3"> Running Statistical Tests </h3>
+                <p>
+                    Next, using the data collected from studio, I ran a total of 6 statistical analyses across 22 samples on the aforementioned 3 metrics between the two versions of the website. This is to determine whether the difference between the two versions is statistically significant. Depending on the metric, I chose between three tests that we went over in lecture: a chi-squared test, a one-tailed t-test, and a two-tailed t-test. 
+                </p>
+                <p>
+                    Please note that in the initial data collection phase, Version A had two additional samples compared to Version B due to some classmates leaving studio early. To ensure a balanced comparison between Version A and Version B, the last two entries from the Version A dataset were excluded from the analysis. This was to maintain consistency and fairness in the comparative evaluation between the two versions.
+                </p>
+
+                <h4 class="mb-3"> Metric 1. Misclick Rate </h4>
+                    <div class="row mb-3"> <!-- row added to wrap columns -->
+                        <!-- Column 1 -->
+                        <div class="col">
+                            <p> <b> Analysis </b></p>
+                            <p> 
+                                For this metric, I used a chi-squared test to compare the number of misclicks (true) vs the number of non-misclicks (false) for both versions A and B. By structuring the misclick data as categorical (i.e. whether a misclick occurred or not for each interaction), I believe that the chi-squared test becomes a suitable analysis choice since it is designed to analyze categorical variables. Here, a significant result would suggest whether the rate of misclicks is dependent on the version of the interface used. 
+                            </p>
+                            <p>
+                                The analysis returned the following results. The chi-squared statistic is 13.21091811. This measures how much the observed data deviates from what would be expected if there's no relationship between the version of the interface and the frequency of misclicks. A higher chi-squared value would indicate a greater disparity from what would be expected by chance alone. Other than that, the p-value is 0.0002783229979, which is significantly below the conventional alpha level of 0.05. This low value suggests that it's very unlikely for the observed number of misclicks between the two versions to have occurred by chance. 
+                            </p>
+
+                        </div>
+        
+                        <!-- Column 2 -->
+                        <div class="col">
+                            <img src="assets/misclick_stats.png" class="img-fluid" alt="misclick stats">
+                        </div>
+                    </div> <!-- Closing row div -->
+
+                    <p class="mb-3"> <b>Conclusion</b>: Given this evidence, I rejected the null hypothesis, which stated that there's no difference in the rate of misclicks between versions A and B. The data has suggested that the version of the interface has a significant impact on the rate of misclicks, so one version would likely lead to more or fewer misclicks than the other. The difference in misclick rates between the two versions is statistically significant, which shows that the interface design has a meaningful impact on user interaction. </p>
+
+                <h4 class="mb-3"> Metric 2. Time on Page</h4>
+                    <div class="row mb-3"> <!-- row added to wrap columns -->
+                        <!-- Column 1 -->
+                        <div class="col">
+                            <p> <b> Analysis </b></p>
+                            <p> For the time on page metric, I chose to conduct a one-tailed t-test. The alternative hypothesis for time on page also suggests a specific direction (less time spent on the webpage for Version B compared to Version A). The time on page is also a continuous variable, and since the hypothesis is directional, a one-tailed t-test fits this metric. </p>
+                            <p> The analysis returned the following results. The chi-squared statistic is 13.21091811. This measures how much the observed data deviates from what would be expected if there's no relationship between the version of the interface and the frequency of misclicks. A higher chi-squared value would indicate a greater disparity from what would be expected by chance alone. Other than that, the p-value is 0.0002783229979, which is significantly below the conventional alpha level of 0.05. This low value suggests that it's very unlikely for the observed number of misclicks between the two versions to have occurred by chance. </p>
+                            <p> The p-value is extremely high at 0.9999999993 for testing whether the time spent on Version A is less than on Version B. In the context of a one-tailed test, such a high p-value would typically suggest failure to reject the null hypothesis. In other words, it would suggest that the data do not provide strong evidence against the null hypothesis. However, the context comes into play when interpreting this result. This p-value is for the test of whether the time on Version A is less than on Version B, which is the opposite of what I observed (A's time is significantly higher than B's). </p>
+                        </div>
+        
+                        <!-- Column 2 -->
+                        <div class="col">
+                            <img src="assets/timeonpage_stats.png" class="img-fluid" alt="time on page metric stats">
+                        </div>
+                    </div> <!-- Closing row div -->
+
+                    <p class="mb-3"> <b>Conclusion</b>: Given the significant difference in average times (with A > B) and the high T-score, the data strongly suggests that there is a significant difference between the two versions, contrary to what a straightforward interpretation of the p-value might indicate. Therefore, it would be more appropriate to conclude that the data supports rejecting the null hypothesis in favor of the alternative hypothesis: the conclusion that Version A results in significantly longer times spent on the webpage compared to Version B. Therefore, I rejected the null hypothesis (H0) that there is no difference in the time spent on the webpage between users of Version A and Version B. Instead, I accepted the alternative hypothesis (H1) that users of Version B spend less time on the webpage than users of Version A. </p>
+
+                <h4 class="mb-3"> Metric 3. Total Number of Clicks </h4>
+                    <div class="row mb-3"> <!-- row added to wrap columns -->
+                        <!-- Column 1 -->
+                        <div class="col">
+                            <p> <b> Analysis </b></p>
+                            <p> For the total number of clicks, I chose to conduct a one-tailed t-test. The hypothesis again suggests a specific direction - that Version B leads to fewer total clicks than Version A. Since the total number of clicks is a continuous variable and the interest is in a specific direction (fewer clicks in Version B), a one-tailed t-test is the most suitable choice. </p>
+                            <p> Analyzing the provided data for the total number of clicks by users on versions A and B of the website, we can see that Version A users clicked across the page an average of 9.45 times, while users of Version B had a significantly lower average of about 3.18 clicks. The unit here is "clicks per session," measuring the total number of interactions a user has with the website in a single visit. </p>
+                            <p> The variance for Version A is 63.50, indicating a wider spread of data points around the mean, suggesting more variability in the number of clicks among its users. For Version B, the variance is much lower at around 0.35, showing less variability and more consistency in the number of clicks. The degrees of freedom here is around 21.23, which factors into determining the critical value against which the T-score is compared. </p>
+                            <p> The T-score of 3.682198286 indicates a significant difference between the average number of clicks for Versions A and B. The p-value is extremely high at 0.9993169457 for testing whether the number of clicks in Version A is less than in Version B. Conventionally, a high p-value suggests a failure to reject the null hypothesis. However, like in the case of the last metric (total time spent on page), in this context, where we are looking at the directionality (A < B), this high p-value would actually demonstrate that Version A has significantly more clicks than Version B. </p>
+                        </div>
+        
+                        <!-- Column 2 -->
+                        <div class="col">
+                            <img src="assets/totalclicks_stats.png" class="img-fluid" alt="number of clicks metric stats">
+                        </div>
+                    </div> <!-- Closing row div -->
+
+                    <p class="mb-3"> <b>Conclusion</b>: The significant difference in average clicks, along with the significant T-score, strongly indicates a statistically significant difference in the total number of clicks between Versions A and B. The high p-value in this one-tailed test, given the directionality and magnitude of difference, actually supports my conclusion that users of Version A engage in significantly more clicks than users of Version B. Given these results, I reject the null hypothesis (H0) that there is no difference in the total number of clicks performed on the website between users of Version A and users of Version B. I accept the alternative hypothesis (H1) that users of Version B perform fewer total clicks on the website than users of Version A. The notable difference in average clicks, supported by a significant T-score, verifies this, indicating that the improvements made in Version B likely lead to a more efficient user experience since they have reduced the need for excessive clicking to complete the assigned task. </p>
+
+
+        <h2 class="mb-3">Part 3. Summary Statistics & Reflection </h2>
+            <h3 class="mb-3"> Summary Statistics </h3>
+                <p> </p>
+            <h3 class="mb-3"> Reflection </h3>
+                <p> Reflecting on this assignment, I've gained valuable insights into how statistical methods can help us evaluate design choices and their impact on user experience. Although many people at the studio agreed that the tasks became easier once we got to Version B due to familiarization with the interface and its major components, the statistical findings based on the datasets were quite revealing. There was a marked improvement in user interaction metrics from Version A to Version B, and this emphasized the importance of intuitive design and its direct relationship with user efficiency. </p>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    
+</body>
+</html>
