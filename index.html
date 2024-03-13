@@ -193,10 +193,27 @@
 
                     <p class="mb-3"> <b>Conclusion</b>: The significant difference in average clicks, along with the significant T-score, strongly indicates a statistically significant difference in the total number of clicks between Versions A and B. The high p-value in this one-tailed test, given the directionality and magnitude of difference, actually supports my conclusion that users of Version A engage in significantly more clicks than users of Version B. Given these results, I reject the null hypothesis (H0) that there is no difference in the total number of clicks performed on the website between users of Version A and users of Version B. I accept the alternative hypothesis (H1) that users of Version B perform fewer total clicks on the website than users of Version A. The notable difference in average clicks, supported by a significant T-score, verifies this, indicating that the improvements made in Version B likely lead to a more efficient user experience since they have reduced the need for excessive clicking to complete the assigned task. </p>
 
-
+        <hr>
+        
         <h2 class="mb-3">Part 3. Summary Statistics & Reflection </h2>
             <h3 class="mb-3"> Summary Statistics </h3>
-                <p> </p>
+                <div class="row mb-5"> <!-- row added to wrap columns -->
+                    <!-- Column 1 -->
+                    <div class="col">
+                        <p> I collected 22 data points in total. As previously stated, the last two samples for Version A were eliminated due to the users not being present during the testing phase for Version B, which would ideally maintain consistency and fairness in the comparative evaluation.</p>
+                        <p> For Metric 1, misclick rate, I calculated the mean misclick rate by taking the total number of misclicks and dividing it by the total number of events (misclicks and non-misclicks) for each sample. The mean misclick rate was 0.54 (54%) for Sample A and 0.045 (4.5%) for Sample B. This suggests that the interface used in Sample B is more intuitive/user-friendly, which leads to fewer errors in the process of completing the task. The median, typically being the middle value in a dataset when it's ascendingly ordered, doesn't quite apply in the traditional sense as we are dealing with frequencies of categories rather than numerical values. Because of this context, I am choosing to focus more on mean and mode. The mode for Sample A would be "Misclick" as it has the higher count, and Sample B's mode is "non-Misclick." This further emphasizes that Sample B provides a clearer user experience. </p>
+                        <p> For metric 2, the time on page, the mean was 38069.45455 ms for Sample A and 9218.681818 ms for Sample B. In other words, Sample A users spent an average of over 38 seconds per page, significantly higher than the roughly 9 seconds observed for Sample B users. This suggests that Sample B's layout allowed users to complete their tasks more quickly. The median was 39013.5 ms for Sample A and 8892 ms for Sample B. There was no result for mode due to the nature of the units, where it's very unlikely that two users spend the exact same amount of time down to the millisecond on the page. </p>
+                        <p> The third metric, the total number of clicks, further supports the findings so far. The mean was 9.4545… for Sample A and 3.1818… for Sample B, so Sample A required more than double the average number of clicks. This suggests that navigating through Sample A was more complex, potentially due to the layout. The median was 6.5 for Sample A and 3 for Sample B. Interestingly, the mode was 2 for Sample A and 3 for Sample B. </p>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="col">
+                        <img src="assets/summary_table.png" class="img-fluid" alt="summary table of statistics">
+                    </div>
+                </div> <!-- Closing row div -->
+
+                <p> Overall, the summary statistics help to support the comparative user experience between the two versions. They suggest that Sample B's design improvements successfully reduced user errors, enhanced efficiency, and simplified the navigation process, which led to a more user-friendly experience. This shows that thoughtful interface design is critical, and also demonstrates the value of statistical analysis in identifying user pain points in order to improve user experience. </p>
+                
             <h3 class="mb-3"> Reflection </h3>
                 <p> Reflecting on this assignment, I've gained valuable insights into how statistical methods can help us evaluate design choices and their impact on user experience. Although many people at the studio agreed that the tasks became easier once we got to Version B due to familiarization with the interface and its major components, the statistical findings based on the datasets were quite revealing. There was a marked improvement in user interaction metrics from Version A to Version B, and this emphasized the importance of intuitive design and its direct relationship with user efficiency. </p>
     </div>
